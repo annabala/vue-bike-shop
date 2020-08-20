@@ -5,9 +5,9 @@ import store from "./store";
 import "./assets/scss/reset.scss";
 import "./assets/scss/main.scss";
 import Unicon from "vue-unicons";
-import { uniShoppingCart } from "vue-unicons/src/icons";
+import { uniShoppingCart, uniTrashAlt } from "vue-unicons/src/icons";
 
-Unicon.add([uniShoppingCart]);
+Unicon.add([uniShoppingCart, uniTrashAlt]);
 Vue.use(Unicon);
 
 Vue.config.productionTip = false;

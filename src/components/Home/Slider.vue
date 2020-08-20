@@ -5,8 +5,31 @@
       :key="index"
       :style="{ 'background-image': 'url(' + slide.image + ')' }"
       class="slider__slide"
-      >{{ slide.title }}</swiper-slide
     >
+      <div class="slider__slideInner container">
+        <h2 class="slider__slideHeading">
+          <span class="slider__slideTitle">{{ slide.title }}</span
+          ><span class="slider__slideSubtitle">{{ slide.subtitle }}</span>
+        </h2>
+        <p class="slider__slideDesc">{{ slide.desc }}</p>
+        <div class="slider__slideButtons">
+          <VButton
+            :href="'/bikes'"
+            :text="'Buy now'"
+            :theme="'orange'"
+            :size="'medium'"
+            class="slider__slideButton"
+          />
+          <VButton
+            :href="'/bikes'"
+            :text="'Take a Look'"
+            :theme="'whiteBorder'"
+            :size="'medium'"
+            class="slider__slideButton"
+          />
+        </div>
+      </div>
+    </swiper-slide>
     <div
       class="slider__nav slider__nav--prev swiper-button-prev"
       slot="button-prev"
@@ -20,12 +43,14 @@
 </template>
 <script>
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
+import VButton from "@/components/VButton";
 import "swiper/css/swiper.css";
 import slideImg from "@/assets/images/slide.png";
 
 export default {
   name: "Slider",
   components: {
+    VButton,
     Swiper,
     SwiperSlide
   },
@@ -38,19 +63,28 @@ export default {
     return {
       slides: [
         {
-          title: "Perfection In Every Shape",
+          title: "Perfection",
+          subtitle: "In Every Shape",
           url: "/test",
-          image: slideImg
+          image: slideImg,
+          desc:
+            "Our brand new Fishbite Superbike Express 2018 with perfection in every detail and would blow your mind INSTANTLY!!"
         },
         {
-          title: "Perfection In Every Shape",
+          title: "Perfection",
+          subtitle: "In Every Shape",
           url: "/test",
-          image: slideImg
+          image: slideImg,
+          desc:
+            "Our brand new Fishbite Superbike Express 2018 with perfection in every detail and would blow your mind INSTANTLY!!"
         },
         {
-          title: "Perfection In Every Shape",
+          title: "Perfection",
+          subtitle: "In Every Shape",
           url: "/test",
-          image: slideImg
+          image: slideImg,
+          desc:
+            "Our brand new Fishbite Superbike Express 2018 with perfection in every detail and would blow your mind INSTANTLY!!"
         }
       ],
       swiperOptions: {
@@ -89,6 +123,49 @@ export default {
     background-position: center;
   }
 
+  &__slideInner {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0%, -50%);
+  }
+
+  &__slideHeading {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__slideTitle {
+    color: $cOrange;
+    font-size: 10rem;
+    font-weight: 700;
+    line-height: 13.3rem;
+  }
+
+  &__slideSubtitle {
+    color: $cWhite;
+    font-size: 5rem;
+    font-weight: 400;
+    line-height: 6.7rem;
+  }
+
+  &__slideDesc {
+    color: $cWhite;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 2.7rem;
+    max-width: 578px;
+  }
+
+  &__slideButtons {
+    display: flex;
+    margin-top: 8.4rem;
+  }
+
+  &__slideButton {
+    margin-right: 3.2rem;
+  }
+
   &__nav {
     color: $cWhite;
 
@@ -110,20 +187,34 @@ export default {
     &--next {
       &::after {
         margin-right: 10px;
+        transition: transform $tr;
       }
 
       &::before {
         right: -12rem;
+      }
+
+      &:hover {
+        &::after {
+          transform: translateX(5px);
+        }
       }
     }
 
     &--prev {
       &::after {
         margin-left: 10px;
+        transition: transform $tr;
       }
 
       &::before {
         left: -12rem;
+      }
+
+      &:hover {
+        &::after {
+          transform: translateX(-5px);
+        }
       }
     }
   }
