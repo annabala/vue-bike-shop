@@ -73,7 +73,7 @@ export default {
       }
     }
 
-    &.router-link-exact-active {
+    &.router-link-exact-active:not(#{$root}__item--cart) {
       color: $cOrange;
       border-color: $cOrange;
 

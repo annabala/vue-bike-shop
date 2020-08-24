@@ -21,6 +21,6 @@ export default {
   height: 2.5rem;
   text-align: center;
   font-size: 1.5rem;
-  line-height: 2rem;
+  line-height: 2.5rem;
 }
 </style>

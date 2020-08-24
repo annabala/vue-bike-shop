@@ -39,26 +39,69 @@
     <div v-if="cartItems.length > 0" class="cart__total">
       <div class="cart__totalInner">
         <div class="cart__totalTitle">Cart Summary</div>
+        <div class="cart__totalContent">
+          <div class="cart__totalContentItem cart__totalSubtotal">
+            <span class="cart__totalLabel">Subtotal</span>
+            <span>{{ cartSubtotal }}</span>
+          </div>
+          <div class="cart__totalContentItem cart__totalGift">
+            <span class="cart__totalLabel">Gift Wrapping</span>
+          </div>
+          <div class="cart__totalContentItem cart__totalShipping">
+            <span class="cart__totalLabel">Shipping</span>
+          </div>
+          <div class="cart__totalContentItem cart__totalCou">
+            <span class="cart__totalLabel">Coupon</span>
+          </div>
+          <div class="cart__totalContentItem cart__totalGrandTotal">
+            <span class="cart__totalLabel cart__totalLabel--big"
+              >Grand Total</span
+            >
+            <span class="cart__totalValue">$2450</span>
+          </div>
+        </div>
+        <div class="cart__totalButtons">
+          <VButton
+            :href="'/bikes'"
+            :text="'Continue Shop'"
+            :theme="'orangeBorder'"
+            :size="'small'"
+            class="cart__totalButton"
+          />
+          <VButton
+            :text="'Checkout'"
+            :theme="'orange'"
+            :size="'small'"
+            class="cart__totalButton"
+          />
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
 import { imagePath } from "@/mixins/imagePath.js";
+import VButton from "@/components/VButton";
 
 export default {
   name: "Cart",
+  components: {
+    VButton
+  },
   mixins: [imagePath],
   computed: {
     cartItems() {
       return this.$store.getters.cartItems;
+    },
+    cartSubtotal() {
+      return this.cartItems.reduce((total, item) => total + item.price, 0);
     }
   },
   methods: {
     removeFromCart(itemId) {
       this.$store.dispatch("removeFromCart", itemId);
     }
-  },
+  }
 };
 </script>
 <style lang="scss">
@@ -68,12 +111,12 @@ export default {
   padding-top: 16rem;
 
   &__items {
-    width: 60%;
+    flex: 60%;
   }
 
   &__total {
     border: 1px solid $cGrey01;
-    width: 40%;
+    flex: 53.6rem;
   }
 
   &__item {
@@ -122,6 +165,60 @@ export default {
     color: $cBlack;
     padding: 2rem 4rem;
     background-color: $cWhite;
+  }
+
+  &__totalTitle {
+    background-color: $cOrange;
+    padding: 2rem 4rem;
+    color: $cWhite;
+    font-size: 3.5rem;
+    line-height: 4.7rem;
+    font-weight: 700;
+  }
+
+  &__totalContent {
+    padding: 1.2rem 4rem;
+  }
+
+  &__totalContentItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &__totalLabel {
+    display: inline-block;
+    font-size: 2.5rem;
+    line-height: 3.3rem;
+    font-weight: 500;
+    margin: 1.5rem 0 0 0;
+
+    &--big {
+      font-size: 3.5rem;
+      line-height: 4.7rem;
+      font-weight: 700;
+    }
+  }
+
+  &__totalGrandTotal {
+    font-size: 3.5rem;
+    line-height: 4.7rem;
+    font-weight: 700;
+    margin-top: 10rem;
+    margin-bottom: 4rem;
+  }
+
+  &__totalButtons {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.2rem;
+  }
+
+  &__totalButton {
+    & button,
+    & a {
+      width: 22rem;
+    }
   }
 }
 </style>
