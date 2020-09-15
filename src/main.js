@@ -12,6 +12,12 @@ Vue.use(Unicon);
 
 Vue.config.productionTip = false;
 
+Vue.filter("uppercase", function(value) {
+  if (!value) return "";
+  value = value.toString();
+  return value.toUpperCase();
+});
+
 new Vue({
   router,
   store,
