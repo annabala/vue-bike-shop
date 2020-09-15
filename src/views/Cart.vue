@@ -1,7 +1,7 @@
 <template>
   <div class="cart container">
     <p v-if="cartItems.length < 1" class="cart__info">
-      Cart is empty, go back shopping
+      Cart is empty, <router-link to="/bikes" class="cart__infoLink">go back shopping</router-link>
     </p>
     <ul v-if="cartItems.length > 0" class="cart__items">
       <li v-for="item in cartItems" :key="item.id" class="cart__item">
@@ -23,16 +23,15 @@
             </button>
           </div>
           <div class="cart__itemContentBottom">
-            <select name="quantity" id="">
-              <option
-                v-for="(option, index) in item.quantity"
-                :key="index"
-                value="option"
-                >{{ option }}</option
-              >
-            </select>
-            <div class="cart__itemPrice">{{ `$${item.price}` }}</div>
+            <v-select
+              name="quantity"
+              :options="itemQuantity(item.quantity)"
+              :placeholder="quantity"
+              v-model="quantity"
+              class="cart__itemSelect"
+            ></v-select>
           </div>
+          <div class="cart__itemPrice">{{ `$${item.price}` }}</div>
         </div>
       </li>
     </ul>
@@ -80,15 +79,24 @@
   </div>
 </template>
 <script>
+import vSelect from "vue-select";
 import { imagePath } from "@/mixins/imagePath.js";
 import VButton from "@/components/VButton";
+import 'vue-select/dist/vue-select.css';
+
 
 export default {
   name: "Cart",
   components: {
-    VButton
+    VButton,
+    vSelect
   },
   mixins: [imagePath],
+  data() {
+    return {
+      quantity: 1
+    };
+  },
   computed: {
     cartItems() {
       return this.$store.getters.cartItems;
@@ -100,11 +108,16 @@ export default {
   methods: {
     removeFromCart(itemId) {
       this.$store.dispatch("removeFromCart", itemId);
+    },
+    itemQuantity(item) {
+      console.log(item);
+      return Array.from(Array(item).keys(), (_, i) => i + 1);
     }
   }
 };
 </script>
 <style lang="scss">
+
 .cart {
   $root: &;
   display: flex;
@@ -159,12 +172,20 @@ export default {
     font-weight: 700;
   }
 
+  &__itemSelect {
+    width: 10rem;
+  }
+
   &__info {
     font-size: 4rem;
     line-height: 4.5rem;
     color: $cBlack;
     padding: 2rem 4rem;
     background-color: $cWhite;
+  }
+
+  &__infoLink {
+    color: $cOrange;
   }
 
   &__totalTitle {

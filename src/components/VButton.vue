@@ -66,6 +66,19 @@ export default {
 
     &--orange {
       background-color: $cOrange;
+      border: 2px solid transparent;
+      color: $cWhite;
+      transition: color $tr, background-color $tr, border $tr;
+
+      &:hover {
+        background-color: $cWhite;
+        color: $cOrange;
+        border: 2px solid $cOrange;
+      }
+    }
+
+    &--orangeHome {
+      background-color: $cOrange;
       color: $cWhite;
       position: relative;
 
@@ -101,6 +114,12 @@ export default {
       background-color: transparent;
       border: 2px solid $cOrange;
       color: $cOrange;
+      transition: border $tr, color $tr;
+
+      &:hover {
+        color: $cDarkBlue;
+        border: 2px solid $cDarkBlue;
+      }
     }
 
     &--whiteBorder {

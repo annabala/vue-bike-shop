@@ -71,6 +71,91 @@ export default new Vuex.Store({
         images: ["bike1.png", "bike2.jpg"]
       },
       {
+        name: "Beautiful red bike",
+        id: 533636,
+        price: 800,
+        promo: {
+          value: "",
+          price: ""
+        },
+        label: "",
+        color: "red",
+        size: "17",
+        gender: "woman",
+        quantity: 0,
+        dateAdded: "Tue Mar 24 2015 20:00:00 GMT-0400 (Eastern Daylight Time)",
+        category: "city",
+        details: {
+          material: "carbon",
+          additional: "It is great to take a ride in the city"
+        },
+        images: ["bike1.png", "bike3.jpg"]
+      },
+      {
+        name: "Superfast bike",
+        id: 533641,
+        price: 1340,
+        promo: {
+          value: "",
+          price: ""
+        },
+        label: "hot",
+        color: "blue",
+        size: "20",
+        gender: "woman",
+        quantity: 2,
+        dateAdded: "Tue Mar 24 2015 20:00:00 GMT-0400 (Eastern Daylight Time)",
+        category: "outdoor",
+        details: {
+          material: "carbon",
+          additional: "Go fast!!"
+        },
+        images: ["bike1.png", "bike2.jpg"]
+      },
+      {
+        name: "Beautiful red bike",
+        id: 533643,
+        price: 800,
+        promo: {
+          value: "",
+          price: ""
+        },
+        label: "",
+        color: "red",
+        size: "17",
+        gender: "woman",
+        quantity: 0,
+        dateAdded: "Tue Mar 24 2015 20:00:00 GMT-0400 (Eastern Daylight Time)",
+        category: "city",
+        details: {
+          material: "carbon",
+          additional: "It is great to take a ride in the city"
+        },
+        images: ["bike1.png", "bike3.jpg"]
+      },
+      {
+        name: "Superfast bike",
+        id: 533564,
+        price: 1340,
+        promo: {
+          value: "",
+          price: ""
+        },
+        label: "hot",
+        color: "blue",
+        size: "20",
+        gender: "woman",
+        quantity: 2,
+        dateAdded: "Tue Mar 24 2015 20:00:00 GMT-0400 (Eastern Daylight Time)",
+        category: "outdoor",
+        details: {
+          material: "carbon",
+          additional: "Go fast!!"
+        },
+        images: ["bike1.png", "bike2.jpg"]
+      },
+
+      {
         name: "Child bike",
         id: 53365,
         price: 600,
@@ -89,7 +174,7 @@ export default new Vuex.Store({
           material: "carbon",
           additional: "Kids go with you"
         },
-        images: ["bike3.jpg", "bike2.jpg"]
+        images: ["bike1.png", "bike2.jpg"]
       }
     ]
   },

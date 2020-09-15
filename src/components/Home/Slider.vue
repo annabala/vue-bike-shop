@@ -16,7 +16,7 @@
           <VButton
             :href="'/bikes'"
             :text="'Buy now'"
-            :theme="'orange'"
+            :theme="'orangeHome'"
             :size="'medium'"
             class="slider__slideButton"
           />
@@ -46,6 +46,9 @@ import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 import VButton from "@/components/VButton";
 import "swiper/css/swiper.css";
 import slideImg from "@/assets/images/slide.png";
+import slideImgTwo from "@/assets/images/products/bike2.jpg";
+import slideImgThree from "@/assets/images/products/bike3.jpg";
+
 
 export default {
   name: "Slider",
@@ -74,7 +77,7 @@ export default {
           title: "Perfection",
           subtitle: "In Every Shape",
           url: "/test",
-          image: slideImg,
+          image: slideImgThree,
           desc:
             "Our brand new Fishbite Superbike Express 2018 with perfection in every detail and would blow your mind INSTANTLY!!"
         },
@@ -82,7 +85,7 @@ export default {
           title: "Perfection",
           subtitle: "In Every Shape",
           url: "/test",
-          image: slideImg,
+          image: slideImgTwo,
           desc:
             "Our brand new Fishbite Superbike Express 2018 with perfection in every detail and would blow your mind INSTANTLY!!"
         }
