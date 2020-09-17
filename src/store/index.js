@@ -26,6 +26,8 @@ export default new Vuex.Store({
           material: "carbon",
           additional: "It is great to take a ride in the city"
         },
+        description:
+          "<p>Kitsuma is a point to point singletrack trail that has a machine groomed tread in most parts. Trails are drying out quickly. When combined with Otero Upper, this trail is just crazy fast, flowy, amazingness. Otherwise dry. You can ride around everything, which will give you a chance to look before you leap.</p>",
         images: ["bike1.png", "bike2.jpg"]
       },
       {
@@ -47,7 +49,9 @@ export default new Vuex.Store({
           material: "carbon",
           additional: "It is great to take a ride in the city"
         },
-        images: ["bike1.png", "bike3.jpg"]
+        description:
+          "<p>Chewed up, lots of braking bumps, but still fun. Butcher Ranch is the main trail for the classic Downieville Downhill. You can find everyone out here having fun from people in body armor and downhill bikes to families testing their kids limits to xc racer types riding intervals.</p><p>Blast down Ridgeline all the way to Lake Imaging Road. For the ultimate downhill blast, ride to the top of Hickory Mountain Loop, take a minute to catch your breath and prepare to smile all the way to the parking lot, barely needing to pedal.</p>",
+        images: ["bike1.png", "bike3.jpg", "bike1.png", "bike3.jpg"]
       },
       {
         name: "Superfast bike",
@@ -68,6 +72,8 @@ export default new Vuex.Store({
           material: "carbon",
           additional: "Go fast!!"
         },
+        description:
+          "<p>Chewed up, lots of braking bumps, but still fun. Butcher Ranch is the main trail for the classic Downieville Downhill. You can find everyone out here having fun from people in body armor and downhill bikes to families testing their kids limits to xc racer types riding intervals.</p><p>Blast down Ridgeline all the way to Lake Imaging Road. For the ultimate downhill blast, ride to the top of Hickory Mountain Loop, take a minute to catch your breath and prepare to smile all the way to the parking lot, barely needing to pedal.</p>",
         images: ["bike1.png", "bike2.jpg"]
       },
       {
@@ -89,6 +95,8 @@ export default new Vuex.Store({
           material: "carbon",
           additional: "It is great to take a ride in the city"
         },
+        description:
+          "<p>Fast, fun descent. This is the third downhill only trail on the north side trail network. A steep, punchy switchback filled climb follows a set of spines from Ridgecrest Conference Center in Black Mountain, NC to the parking lot of Old Fort Picnic area. Blast down Ridgeline all the way to Lake Imaging Road. Don't miss this trail!</p>",
         images: ["bike1.png", "bike3.jpg"]
       },
       {
@@ -110,6 +118,8 @@ export default new Vuex.Store({
           material: "carbon",
           additional: "Go fast!!"
         },
+        description:
+          "<p>Fast, fun descent. This is the third downhill only trail on the north side trail network. A steep, punchy switchback filled climb follows a set of spines from Ridgecrest Conference Center in Black Mountain, NC to the parking lot of Old Fort Picnic area. Blast down Ridgeline all the way to Lake Imaging Road. Don't miss this trail!</p><p>Narrow in places and twisty througout, this leg churner is sure to keep you on you toes. Trail is in good shape, minus dirt bikers dusting it up some. A steep, punchy switchback filled climb follows a set of spines from Ridgecrest Conference Center in Black Mountain, NC to the parking lot of Old Fort Picnic area. The end of the jump line trail there is a fairly steep climb to get to the next section. Fun!</p>",
         images: ["bike1.png", "bike2.jpg"]
       },
       {
@@ -131,6 +141,8 @@ export default new Vuex.Store({
           material: "carbon",
           additional: "It is great to take a ride in the city"
         },
+        description:
+          "<p>Fast, fun descent. A steep, punchy switchback filled climb follows a set of spines from Ridgecrest Conference Center in Black Mountain, NC to the parking lot of Old Fort Picnic area. Blast down Ridgeline all the way to Lake Imaging Road. Don't miss this trail!</p><p>Narrow in places and twisty througout, this leg churner is sure to keep you on you toes. Trail is in good shape, minus dirt bikers dusting it up some. A steep, punchy switchback filled climb follows a set of spines from Ridgecrest Conference Center in Black Mountain, NC to the parking lot of Old Fort Picnic area. The end of the jump line trail there is a fairly steep climb to get to the next section. Fun!</p>",
         images: ["bike1.png", "bike3.jpg"]
       },
       {
@@ -152,6 +164,8 @@ export default new Vuex.Store({
           material: "carbon",
           additional: "Go fast!!"
         },
+        description:
+          "<p>Fast, fun descent. A steep, punchy switchback filled climb follows a set of spines from Ridgecrest Conference Center in Black Mountain, NC to the parking lot of Old Fort Picnic area. Blast down Ridgeline all the way to Lake Imaging Road. Don't miss this trail!</p><p>Narrow in places and twisty througout, this leg churner is sure to keep you on you toes. Trail is in good shape, minus dirt bikers dusting it up some. A steep, punchy switchback filled climb follows a set of spines from Ridgecrest Conference Center in Black Mountain, NC to the parking lot of Old Fort Picnic area. The end of the jump line trail there is a fairly steep climb to get to the next section. Fun!</p>",
         images: ["bike1.png", "bike2.jpg"]
       },
 
@@ -174,6 +188,8 @@ export default new Vuex.Store({
           material: "carbon",
           additional: "Kids go with you"
         },
+        description:
+          "<p>Fast, fun descent. A steep, punchy switchback filled climb follows a set of spines from Ridgecrest Conference Center in Black Mountain, NC to the parking lot of Old Fort Picnic area. Blast down Ridgeline all the way to Lake Imaging Road. Don't miss this trail!</p><p>Narrow in places and twisty througout, this leg churner is sure to keep you on you toes. Trail is in good shape, minus dirt bikers dusting it up some. A steep, punchy switchback filled climb follows a set of spines from Ridgecrest Conference Center in Black Mountain, NC to the parking lot of Old Fort Picnic area. The end of the jump line trail there is a fairly steep climb to get to the next section. Fun!</p>",
         images: ["bike1.png", "bike2.jpg"]
       }
     ]
