@@ -10,6 +10,7 @@ export default new Vuex.Store({
       {
         name: "Superbike One",
         id: 53362,
+        company: "Kelly's",
         price: 1000,
         promo: {
           value: "10",
@@ -33,6 +34,7 @@ export default new Vuex.Store({
       {
         name: "Beautiful red bike",
         id: 53363,
+        company: "Kelly's",
         price: 800,
         promo: {
           value: "",
@@ -56,6 +58,7 @@ export default new Vuex.Store({
       {
         name: "Superfast bike",
         id: 53364,
+        company: "Scott",
         price: 1340,
         promo: {
           value: "",
@@ -79,6 +82,7 @@ export default new Vuex.Store({
       {
         name: "Beautiful red bike",
         id: 533636,
+        company: "Scott",
         price: 800,
         promo: {
           value: "",
@@ -102,6 +106,7 @@ export default new Vuex.Store({
       {
         name: "Superfast bike",
         id: 533641,
+        company: "Scott",
         price: 1340,
         promo: {
           value: "",
@@ -125,6 +130,7 @@ export default new Vuex.Store({
       {
         name: "Beautiful red bike",
         id: 533643,
+        company: "Scott",
         price: 800,
         promo: {
           value: "",
@@ -148,6 +154,7 @@ export default new Vuex.Store({
       {
         name: "Superfast bike",
         id: 533564,
+        company: "Unibike",
         price: 1340,
         promo: {
           value: "",
@@ -172,6 +179,7 @@ export default new Vuex.Store({
       {
         name: "Child bike",
         id: 53365,
+        company: "Unibike",
         price: 600,
         promo: {
           value: "10",

@@ -1,0 +1,13 @@
+.v-select {
+  font-size: 2rem;
+  line-height: 3rem;
+
+  & .vs__dropdown-toggle {
+    border: 2px solid rgba($cGrey03, 0.26);
+    padding: 1rem 0.5rem;
+  }
+
+  & .vs__open-indicator {
+    fill: $cOrange;
+  }
+}

@@ -17,8 +17,10 @@
       :class="[
         'vButton__button',
         `vButton__button--${theme}`,
-        `vButton__button--${size}`
+        `vButton__button--${size}`,
+        { 'vButton__button--disabled': disabled }
       ]"
+      :disabled="disabled"
       @click="onClick"
     >
       <span>{{ text }}</span>
@@ -48,6 +50,10 @@ export default {
     size: {
       type: String,
       default: "medium"
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
@@ -103,6 +109,10 @@ export default {
           transform: translate(10px, -10px);
         }
       }
+    }
+
+    &--orangeText {
+      color: $cOrange;
     }
 
     &--grey {
@@ -177,10 +187,30 @@ export default {
       line-height: 3.6rem;
     }
 
+    &--xxsmall {
+      width: 13.8rem;
+      height: auto;
+      font-size: 1.6rem;
+      line-height: 2.6rem;
+    }
+
     &--link {
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    &--disabled {
+      background-color: $cGrey02;
+      border: 2px solid $cGrey02;
+      cursor: default;
+      opacity: 0.4;
+
+      &:hover {
+        background-color: $cGrey02;
+        border: 2px solid $cGrey02;
+        color: $cWhite;
+      }
     }
   }
 }

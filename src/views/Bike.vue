@@ -3,6 +3,7 @@
     <div class="bike__top">
       <div class="bike__info">
         <VHeading :level="'1'" :text="product.name" class="bike__name" />
+        <p class="bike__company">({{ product.company }})</p>
         <div class="bike__images">
           <img
             v-for="(image, index) in product.images"
@@ -16,7 +17,10 @@
       <div class="bike__actions">
         <div class="bike__details">
           <p class="bike__price">Price: {{ `$${product.price}` }}</p>
-          <p class="bike__detail">Left in stock: {{ product.quantity }}</p>
+          <p v-if="product.quantity > 0" class="bike__detail">
+            Left in stock: {{ product.quantity }}
+          </p>
+          <p v-else class="bike__detail">Out of stock</p>
         </div>
         <div class="bike__buttons">
           <VButton
@@ -30,8 +34,17 @@
             :text="'BUY'"
             :theme="'orange'"
             :size="'small'"
+            :disabled="product.quantity === 0"
             class="bike__button"
             @click="addToCart"
+          />
+          <VButton
+            v-if="product.quantity === 0"
+            :text="'Inform when available'"
+            :theme="'orangeText'"
+            :size="'xxsmall'"
+            class="bike__button bike__button--noPadding"
+            @click="getClientDetails"
           />
         </div>
       </div>
@@ -40,7 +53,7 @@
       <VHeading
         :level="'2'"
         :text="'Description:'"
-        class="bike__heading bike__heading--h2"
+        class="bike__heading bike__heading--h2 bike__heading--bg"
       />
       <div class="bike__description" v-html="product.description" />
     </div>
@@ -70,6 +83,9 @@ export default {
     askAboutBike() {
       alert("form will show up");
     },
+    getClientDetails() {
+      alert("please leave your");
+    },
   },
 };
 </script>
@@ -77,6 +93,7 @@ export default {
 .bike {
   $root: &;
   padding-top: 16rem;
+  padding-bottom: 6rem;
 
   &__top {
     display: flex;
@@ -95,13 +112,27 @@ export default {
     font-weight: 700;
   }
 
+  &__company {
+    font-size: 2.5rem;
+    line-height: 3.3rem;
+    font-weight: 600;
+    margin-top: 1rem;
+  }
+
   &__button {
-    &:first-of-type {
-      margin-bottom: 2rem;
-    }
+    margin-bottom: 2rem;
+
     & button {
       width: 100%;
       padding: 0 1rem;
+    }
+
+    &--noPadding {
+      & button {
+        width: auto;
+        padding: 0;
+        text-decoration: underline;
+      }
     }
   }
 
@@ -139,7 +170,7 @@ export default {
     font-size: 2rem;
     line-height: 3rem;
     font-weight: 600;
-    padding-bottom: 3rem;
+    padding-left: 1rem;
 
     & p:not(:first-of-type) {
       margin-top: 1.5rem;
@@ -149,6 +180,12 @@ export default {
   &__heading {
     &--h2 {
       margin-bottom: 2rem;
+    }
+
+    &--bg {
+      color: $cWhite;
+      background-color: $cDarkBlue;
+      padding: 1rem;
     }
   }
 }

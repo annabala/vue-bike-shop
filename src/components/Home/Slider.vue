@@ -95,6 +95,7 @@ export default {
         loop: true,
         speed: 800,
         spaceBetween: 0,
+        simulateTouch: false,
         lazy: {
           loadPrevNext: true
         },

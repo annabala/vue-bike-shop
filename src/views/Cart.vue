@@ -1,14 +1,19 @@
 <template>
-  <div class="cart container">
+  <div class="cart container container--list">
     <p v-if="cartItems.length < 1" class="cart__info">
-      Cart is empty, <router-link to="/bikes" class="cart__infoLink">go back shopping</router-link>
+      Cart is empty,
+      <router-link to="/bikes" class="cart__infoLink"
+        >go back shopping</router-link
+      >
     </p>
     <ul v-if="cartItems.length > 0" class="cart__items">
       <li v-for="item in cartItems" :key="item.id" class="cart__item">
         <img :src="makeImagePath(item)" alt="" class="cart__itemImage" />
         <div class="cart__itemContent">
           <div class="cart__itemContentTop">
-            <p class="cart__itemName">{{ item.name }}</p>
+            <div class="cart__itemName">
+              {{ item.name }} <span class="cart__itemCompany">({{ item.company }})</span>
+            </div>
             <button
               class="cart__itemDeleteIcon"
               @click="removeFromCart(item.id)"
@@ -26,12 +31,13 @@
             <v-select
               name="quantity"
               :options="itemQuantity(item.quantity)"
-              :placeholder="quantity"
+              :searchable="false"
+              :clearable="false"
               v-model="quantity"
               class="cart__itemSelect"
             ></v-select>
+            <div class="cart__itemPrice">{{ `$${item.price}` }}</div>
           </div>
-          <div class="cart__itemPrice">{{ `$${item.price}` }}</div>
         </div>
       </li>
     </ul>
@@ -41,7 +47,7 @@
         <div class="cart__totalContent">
           <div class="cart__totalContentItem cart__totalSubtotal">
             <span class="cart__totalLabel">Subtotal</span>
-            <span>{{ cartSubtotal }}</span>
+            <span class="cart__totalValue">{{ cartSubtotal }}</span>
           </div>
           <div class="cart__totalContentItem cart__totalGift">
             <span class="cart__totalLabel">Gift Wrapping</span>
@@ -82,19 +88,18 @@
 import vSelect from "vue-select";
 import { imagePath } from "@/mixins/imagePath.js";
 import VButton from "@/components/VButton";
-import 'vue-select/dist/vue-select.css';
-
+import "vue-select/dist/vue-select.css";
 
 export default {
   name: "Cart",
   components: {
     VButton,
-    vSelect
+    vSelect,
   },
   mixins: [imagePath],
   data() {
     return {
-      quantity: 1
+      quantity: "1",
     };
   },
   computed: {
@@ -103,42 +108,49 @@ export default {
     },
     cartSubtotal() {
       return this.cartItems.reduce((total, item) => total + item.price, 0);
-    }
+    },
   },
   methods: {
     removeFromCart(itemId) {
       this.$store.dispatch("removeFromCart", itemId);
     },
     itemQuantity(item) {
-      console.log(item);
       return Array.from(Array(item).keys(), (_, i) => i + 1);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">
-
 .cart {
   $root: &;
   display: flex;
+  align-items: flex-start;
   padding-top: 16rem;
+  padding-bottom: 6rem;
 
   &__items {
-    flex: 60%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    flex: 70%;
   }
 
   &__total {
-    border: 1px solid $cGrey01;
+    border: 2px solid rgba($cGrey03, 0.26);
     flex: 53.6rem;
   }
 
   &__item {
     display: flex;
     max-height: 31.2rem;
+    border: 2px solid rgba($cGrey03, 0.26);
+    width: calc(100% - 1.6rem);
+    margin-bottom: 1.6rem;
   }
 
   &__itemImage {
     width: 30%;
+    object-fit: contain;
   }
 
   &__itemContent {
@@ -153,10 +165,16 @@ export default {
   &__itemContentBottom {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   &__itemName {
     font-size: 3.5rem;
+    font-weight: 700;
+  }
+
+  &__itemCompany {
+    font-size: 3rem;
     font-weight: 700;
   }
 
@@ -219,6 +237,12 @@ export default {
       line-height: 4.7rem;
       font-weight: 700;
     }
+  }
+
+  &__totalValue {
+    font-size: 2.5rem;
+    line-height: 3.3rem;
+    font-weight: 500;
   }
 
   &__totalGrandTotal {

@@ -23,7 +23,7 @@
 
             <div class="bikes__itemInfo">
               <div class="bikes__itemName">
-                <h2>{{ product.name }}</h2>
+                <h2>{{ product.name }} ({{ product.company }})</h2>
                 <p>{{ product.details.additional }}</p>
                 <p class="bikes__itemName bikes__itemName--more">more...</p>
               </div>

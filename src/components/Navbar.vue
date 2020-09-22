@@ -1,10 +1,19 @@
 <template>
   <div class="navbar">
-    <img src="./../assets/images/OldGold.png" alt="oldgold" />
+    <router-link to="/"
+      ><img src="./../assets/images/OldGold.png" alt="oldgold"
+    /></router-link>
     <div class="navbar__items">
       <router-link to="/" class="navbar__item"><span>Home</span></router-link>
-      <router-link to="/bikes" class="navbar__item"><span>Bikes</span></router-link>
-      <router-link to="/cart" class="navbar__item navbar__item--noBorder navbar__item--cart"
+      <router-link to="/bikes" class="navbar__item"
+        ><span>Bikes</span></router-link
+      >
+      <router-link to="/about" class="navbar__item"
+        ><span>About</span></router-link
+      >
+      <router-link
+        to="/cart"
+        class="navbar__item navbar__item--noBorder navbar__item--cart"
         ><unicon
           name="shopping-cart"
           fill="white"
@@ -23,22 +32,22 @@ import CounterBadge from "@/components/CounterBadge";
 export default {
   name: "Navbar",
   components: {
-    CounterBadge
+    CounterBadge,
   },
   computed: {
     cartLength() {
       return this.$store.state.cart.length;
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">
 .navbar {
   $root: &;
-  background-color: #00163a;
+  background-color: $cDarkBlue;
   display: flex;
   justify-content: space-between;
-  padding: 3rem 14rem 3rem 6.4rem;
+  padding: 2rem 14rem 2rem 6.4rem;
   position: fixed;
   top: 0;
   width: 100%;
