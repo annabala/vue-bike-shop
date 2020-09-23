@@ -6,101 +6,19 @@
         >go back shopping</router-link
       >
     </p>
-    <ul v-if="cartItems.length > 0" class="cart__items">
-      <li v-for="item in cartItems" :key="item.id" class="cart__item">
-        <img :src="makeImagePath(item)" alt="" class="cart__itemImage" />
-        <div class="cart__itemContent">
-          <div class="cart__itemContentTop">
-            <div class="cart__itemName">
-              {{ item.name }} <span class="cart__itemCompany">({{ item.company }})</span>
-            </div>
-            <button
-              class="cart__itemDeleteIcon"
-              @click="removeFromCart(item.id)"
-            >
-              <unicon
-                name="trash-alt"
-                fill="#EF8216"
-                width="32"
-                height="32"
-                class="cart__itemIcon"
-              />
-            </button>
-          </div>
-          <div class="cart__itemContentBottom">
-            <v-select
-              name="quantity"
-              :options="itemQuantity(item.quantity)"
-              :searchable="false"
-              :clearable="false"
-              v-model="quantity"
-              class="cart__itemSelect"
-            ></v-select>
-            <div class="cart__itemPrice">{{ `$${item.price}` }}</div>
-          </div>
-        </div>
-      </li>
-    </ul>
-    <div v-if="cartItems.length > 0" class="cart__total">
-      <div class="cart__totalInner">
-        <div class="cart__totalTitle">Cart Summary</div>
-        <div class="cart__totalContent">
-          <div class="cart__totalContentItem cart__totalSubtotal">
-            <span class="cart__totalLabel">Subtotal</span>
-            <span class="cart__totalValue">{{ cartSubtotal }}</span>
-          </div>
-          <div class="cart__totalContentItem cart__totalGift">
-            <span class="cart__totalLabel">Gift Wrapping</span>
-          </div>
-          <div class="cart__totalContentItem cart__totalShipping">
-            <span class="cart__totalLabel">Shipping</span>
-          </div>
-          <div class="cart__totalContentItem cart__totalCou">
-            <span class="cart__totalLabel">Coupon</span>
-          </div>
-          <div class="cart__totalContentItem cart__totalGrandTotal">
-            <span class="cart__totalLabel cart__totalLabel--big"
-              >Grand Total</span
-            >
-            <span class="cart__totalValue">$2450</span>
-          </div>
-        </div>
-        <div class="cart__totalButtons">
-          <VButton
-            :href="'/bikes'"
-            :text="'Continue Shop'"
-            :theme="'orangeBorder'"
-            :size="'small'"
-            class="cart__totalButton"
-          />
-          <VButton
-            :text="'Checkout'"
-            :theme="'orange'"
-            :size="'small'"
-            class="cart__totalButton"
-          />
-        </div>
-      </div>
-    </div>
+    <cartList v-if="cartItems.length > 0" class="cart__items" />
+    <cartTotal v-if="cartItems.length > 0" class="cart__total" />
   </div>
 </template>
 <script>
-import vSelect from "vue-select";
-import { imagePath } from "@/mixins/imagePath.js";
-import VButton from "@/components/VButton";
-import "vue-select/dist/vue-select.css";
+import CartList from "@/components/Cart/CartList";
+import CartTotal from "@/components/Cart/CartTotal";
 
 export default {
   name: "Cart",
   components: {
-    VButton,
-    vSelect,
-  },
-  mixins: [imagePath],
-  data() {
-    return {
-      quantity: "1",
-    };
+    CartList,
+    CartTotal,
   },
   computed: {
     cartItems() {
