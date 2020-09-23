@@ -24,9 +24,9 @@ export default {
 </script>
 <style lang="scss">
 $tag-sizes: (
-  "h1": 32px,
-  "h2": 25px,
-  "h3": 22px,
+  "h1": 45px,
+  "h2": 30px,
+  "h3": 25px,
   "h4": 18px,
   "h5": 16px,
   "h6": 14px
