@@ -1,5 +1,6 @@
 <template>
   <div class="bikes container container--list">
+    <VHeading :level="'1'" :text="'Our bikes:'" class="bikes__heading bikes__heading--h1" />
     <ul class="bikes__items">
       <li v-for="product in products" :key="product.id" class="bikes__item">
         <div class="bikes__itemInner">
@@ -56,17 +57,19 @@
 <script>
 import { imagePath } from "@/mixins/imagePath.js";
 import VButton from "@/components/VButton";
+import VHeading from "@/components/VHeading";
 
 export default {
   name: "bikes",
   components: {
     VButton,
+    VHeading
   },
   mixins: [imagePath],
   computed: {
     products() {
       return this.$store.state.products;
-    },
+    }
   },
   methods: {
     imagePath(product) {
@@ -74,8 +77,8 @@ export default {
     },
     addToCart(productId) {
       this.$store.dispatch("addToCart", productId);
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss">
@@ -83,6 +86,12 @@ export default {
   $root: &;
   padding-top: 16rem;
   padding-bottom: 6rem;
+
+  &__heading {
+    &--h1 {
+      margin-bottom: 4rem;
+    }
+  }
 
   &__info {
     font-size: 4rem;
