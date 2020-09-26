@@ -1,9 +1,10 @@
 <template>
-  <div class="navbar">
+  <div :class="['navbar', { 'is-active': isMobile }]">
     <router-link to="/"
       ><img src="./../assets/images/OldGold.png" alt="oldgold"
     /></router-link>
-    <div class="navbar__items">
+    <MobileMenuButton class="navbar__mobileButton" @click="isOpen" />
+    <div :class="['navbar__items', { 'is-active': isMobile }]">
       <router-link to="/" class="navbar__item"><span>Home</span></router-link>
       <router-link to="/bikes" class="navbar__item"
         ><span>Bikes</span></router-link
@@ -28,17 +29,29 @@
 </template>
 <script>
 import CounterBadge from "@/components/CounterBadge";
+import MobileMenuButton from "@/components/MobileMenuButton";
 
 export default {
   name: "Navbar",
   components: {
     CounterBadge,
+    MobileMenuButton
   },
   computed: {
     cartLength() {
       return this.$store.state.cart.length;
-    },
+    }
   },
+  data() {
+    return {
+      isMobile: false
+    };
+  },
+  methods: {
+    isOpen() {
+      this.isMobile = !this.isMobile;
+    }
+  }
 };
 </script>
 <style lang="scss">
@@ -47,15 +60,42 @@ export default {
   background-color: $cDarkBlue;
   display: flex;
   justify-content: space-between;
+  border-bottom: 2px solid transparent;
   padding: 2rem 14rem 2rem 6.4rem;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 100;
 
+  @include rwd("large-tablet") {
+    padding: 2rem;
+    align-items: center;
+    transition: border-bottom $tr;
+
+    &.is-active {
+      border-bottom: 2px solid $cGrey04;
+    }
+  }
+
   &__items {
     display: flex;
     align-items: center;
+
+    &.is-active {
+      display: flex;
+      transform: translateX(0);
+    }
+
+    @include rwd("large-tablet") {
+      flex-direction: column;
+      position: absolute;
+      top: 10.3rem;
+      right: 0;
+      background-color: $cDarkBlue;
+      padding: 5rem 10rem;
+      transform: translateX(100%);
+      transition: transform $tr;
+    }
   }
 
   &__item {
@@ -67,6 +107,15 @@ export default {
     margin-right: 5rem;
     padding: 0.4rem;
     transition: border-color $tr;
+
+    @include rwd("large-tablet") {
+      margin-right: 0;
+      margin-bottom: 3rem;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
 
     & span {
       transition: color $tr;
@@ -112,6 +161,19 @@ export default {
     top: -5px;
     right: -20px;
     z-index: 1;
+  }
+
+  &__mobileButton {
+    display: none;
+    margin-right: 1rem;
+    // position: absolute;
+    // top: 50%;
+    // right: 0;
+    // transform: translate(-50%, -50%);
+
+    @include rwd("large-tablet") {
+      display: block;
+    }
   }
 }
 </style>
