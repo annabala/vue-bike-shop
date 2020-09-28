@@ -1,6 +1,10 @@
 <template>
   <div class="bikes container container--list">
-    <VHeading :level="'1'" :text="'Our bikes:'" class="bikes__heading bikes__heading--h1" />
+    <VHeading
+      :level="'1'"
+      :text="'Our bikes:'"
+      class="bikes__heading bikes__heading--h1"
+    />
     <ul class="bikes__items">
       <li v-for="product in products" :key="product.id" class="bikes__item">
         <div class="bikes__itemInner">
@@ -63,13 +67,13 @@ export default {
   name: "bikes",
   components: {
     VButton,
-    VHeading
+    VHeading,
   },
   mixins: [imagePath],
   computed: {
     products() {
       return this.$store.state.products;
-    }
+    },
   },
   methods: {
     imagePath(product) {
@@ -77,8 +81,8 @@ export default {
     },
     addToCart(productId) {
       this.$store.dispatch("addToCart", productId);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">
@@ -108,12 +112,31 @@ export default {
     flex-wrap: wrap;
     margin-left: -0.8rem;
     margin-right: -0.8rem;
+
+    @include rwd("large-laptop") {
+      flex-wrap: wrap;
+    }
   }
 
   &__item {
     flex: 0 0 25%;
     max-width: 25%;
     padding: 0.8rem;
+
+    @include rwd("large-laptop") {
+      flex: 0 0 33.333%;
+      max-width: 33.333%;
+    }
+
+    @include rwd("laptop") {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+
+    @include rwd("tablet") {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
 
     &:hover {
       #{$root}__itemImage {
@@ -161,6 +184,20 @@ export default {
     display: flex;
     justify-content: space-between;
     margin-top: 2rem;
+
+    @include rwd("large-phone") {
+      flex-direction: column;
+    }
+  }
+
+  &__itemActionButton {
+    @include rwd("large-phone") {
+      margin-top: 2rem;
+
+      & button {
+        width: 100%;
+      }
+    }
   }
 
   &__itemPriceRegular {
@@ -216,6 +253,13 @@ export default {
     background-color: $cOrange;
     height: 8.8rem;
     width: 8.8rem;
+
+    @include rwd("large-phone") {
+      font-size: 2rem;
+      line-height: 3.2rem;
+      height: 6.8rem;
+      width: 6.8rem;
+    }
 
     &:first-of-type {
       margin-right: 1rem;
