@@ -3,7 +3,21 @@
     <router-link to="/"
       ><img src="./../assets/images/OldGold.png" alt="oldgold"
     /></router-link>
-    <MobileMenuButton class="navbar__mobileButton" @click="isOpen" />
+    <div class="navbar__mobileBox">
+      <router-link
+        to="/cart"
+        class="navbar__item navbar__item--noBorder navbar__item--cart navbar__item--mobile"
+        ><unicon
+          name="shopping-cart"
+          fill="white"
+          width="32"
+          height="32"
+          class="navbar__icon"
+        />
+        <CounterBadge :count="cartLength" class="navbar__badge" />
+      </router-link>
+      <MobileMenuButton class="navbar__mobileButton" @click="isOpen" />
+    </div>
     <div :class="['navbar__items', { 'is-active': isMobile }]">
       <router-link to="/" class="navbar__item"><span>Home</span></router-link>
       <router-link to="/bikes" class="navbar__item"
@@ -14,7 +28,7 @@
       >
       <router-link
         to="/cart"
-        class="navbar__item navbar__item--noBorder navbar__item--cart"
+        class="navbar__item navbar__item--noBorder navbar__item--cart navbar__item--desktop"
         ><unicon
           name="shopping-cart"
           fill="white"
@@ -28,6 +42,7 @@
   </div>
 </template>
 <script>
+// import { mobileMixin  } from "@/mixins/mobile.js";
 import CounterBadge from "@/components/CounterBadge";
 import MobileMenuButton from "@/components/MobileMenuButton";
 
@@ -35,23 +50,29 @@ export default {
   name: "Navbar",
   components: {
     CounterBadge,
-    MobileMenuButton
+    MobileMenuButton,
   },
+  // mixins: [mobileMixin(true, 1024)],
   computed: {
     cartLength() {
       return this.$store.state.cart.length;
-    }
+    },
+  },
+  watch: {
+    $route() {
+      this.isMobile = false;
+    },
   },
   data() {
     return {
-      isMobile: false
+      isMobile: false,
     };
   },
   methods: {
     isOpen() {
       this.isMobile = !this.isMobile;
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">
@@ -148,6 +169,20 @@ export default {
       position: relative;
       z-index: 2;
     }
+
+    &--desktop {
+      @include rwd("large-tablet") {
+        display: none;
+      }
+    }
+
+    &--mobile {
+      display: none;
+      @include rwd("large-tablet") {
+        display: block;
+        margin-right: 3rem;
+      }
+    }
   }
 
   &__icon {
@@ -158,18 +193,18 @@ export default {
 
   &__badge {
     position: absolute;
-    top: -5px;
-    right: -20px;
+    top: -8px;
+    right: -15px;
     z-index: 1;
+  }
+
+  &__mobileBox {
+    display: flex;
   }
 
   &__mobileButton {
     display: none;
     margin-right: 1rem;
-    // position: absolute;
-    // top: 50%;
-    // right: 0;
-    // transform: translate(-50%, -50%);
 
     @include rwd("large-tablet") {
       display: block;

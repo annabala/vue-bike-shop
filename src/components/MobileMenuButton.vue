@@ -15,6 +15,11 @@ export default {
       isActive: false
     };
   },
+  watch: {
+    $route() {
+      this.isActive = false;
+    },
+  },
   methods: {
     onClick(e) {
       this.$emit("click", e);
