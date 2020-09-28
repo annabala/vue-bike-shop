@@ -1,7 +1,10 @@
 <template>
   <div class="footer">
     <router-link to="/"
-      ><img class="footer__logo" src="./../assets/images/OldGoldDark.png" alt="oldgold"
+      ><img
+        class="footer__logo"
+        src="./../assets/images/OldGoldDark.png"
+        alt="oldgold"
     /></router-link>
     <div class="footer__items">
       <router-link to="/" class="footer__item"><span>Home</span></router-link>
@@ -12,8 +15,10 @@
         ><span>About</span></router-link
       >
       <div class="footer__item footer__item--borderLeft">
-        <p>Contact us:</p>
-        <a class="footer__itemItem" href="mailto:bikeshop@gmail.com">bikeshop@gmail.com</a>
+        <p class="footer__itemLabel">Contact us:</p>
+        <a class="footer__itemItem" href="mailto:bikeshop@gmail.com"
+          >bikeshop@gmail.com</a
+        >
         <a class="footer__itemItem" href="tel:+48556997234">+48 556 997 234</a>
       </div>
     </div>
@@ -32,6 +37,14 @@ export default {
   justify-content: space-between;
   padding: 2rem 14rem 2rem 6.4rem;
 
+  @include rwd("large-tablet") {
+    padding: 2rem;
+  }
+
+  @include rwd("tablet") {
+    flex-wrap: wrap;
+  }
+
   &__logo {
     max-width: 80%;
   }
@@ -39,6 +52,16 @@ export default {
   &__items {
     display: flex;
     align-items: flex-start;
+
+    @include rwd("tablet") {
+      justify-content: space-between;
+      margin-top: 1rem;
+    }
+
+    @include rwd("large-phone") {
+      flex-direction: column;
+      width: 100%;
+    }
   }
 
   &__item {
@@ -53,6 +76,19 @@ export default {
     padding: 0.4rem;
     transition: border-color $tr;
 
+    @include rwd("large-tablet") {
+      margin-right: 2rem;
+    }
+
+    @include rwd("tablet") {
+      justify-content: space-between;
+      margin-right: 1rem;
+    }
+
+    @include rwd("large-phone") {
+      padding: 0.6rem 0;
+    }
+
     & span {
       transition: color $tr;
     }
@@ -66,10 +102,26 @@ export default {
     &--borderLeft {
       padding-left: 2rem;
       border-left: 1px solid $cWhite;
+
+      @include rwd("small-tablet") {
+        padding-left: 1rem;
+      }
+
+      @include rwd("large-phone") {
+        padding-left: 0;
+        border-left: none;
+      }
     }
 
     &--noBorder {
       border-bottom: 0;
+    }
+  }
+
+  &__itemLabel {
+    @include rwd("large-phone") {
+      padding-bottom: 0.1rem;
+      border-bottom: 1px solid $cWhite;
     }
   }
 
