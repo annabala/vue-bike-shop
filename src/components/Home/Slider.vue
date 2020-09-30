@@ -49,18 +49,17 @@ import slideImg from "@/assets/images/slide.png";
 import slideImgTwo from "@/assets/images/products/bike2.jpg";
 import slideImgThree from "@/assets/images/products/bike3.jpg";
 
-
 export default {
   name: "Slider",
   components: {
     VButton,
     Swiper,
-    SwiperSlide
+    SwiperSlide,
   },
   computed: {
     swiper() {
       return this.$refs.mySwiper.$swiper;
-    }
+    },
   },
   data() {
     return {
@@ -71,7 +70,7 @@ export default {
           url: "/test",
           image: slideImg,
           desc:
-            "Our brand new Fishbite Superbike Express 2018 with perfection in every detail and would blow your mind INSTANTLY!!"
+            "Our brand new Fishbite Superbike Express 2018 with perfection in every detail and would blow your mind INSTANTLY!!",
         },
         {
           title: "Perfection",
@@ -79,7 +78,7 @@ export default {
           url: "/test",
           image: slideImgThree,
           desc:
-            "Our brand new Fishbite Superbike Express 2018 with perfection in every detail and would blow your mind INSTANTLY!!"
+            "Our brand new Fishbite Superbike Express 2018 with perfection in every detail and would blow your mind INSTANTLY!!",
         },
         {
           title: "Perfection",
@@ -87,32 +86,32 @@ export default {
           url: "/test",
           image: slideImgTwo,
           desc:
-            "Our brand new Fishbite Superbike Express 2018 with perfection in every detail and would blow your mind INSTANTLY!!"
-        }
+            "Our brand new Fishbite Superbike Express 2018 with perfection in every detail and would blow your mind INSTANTLY!!",
+        },
       ],
       swiperOptions: {
         slidesPerView: 1,
         loop: true,
         speed: 800,
-        spaceBetween: 0,
+        spaceBetween: 10,
         simulateTouch: false,
         lazy: {
-          loadPrevNext: true
+          loadPrevNext: true,
         },
         navigation: {
           nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev"
+          prevEl: ".swiper-button-prev",
         },
         pagination: {
           el: ".swiper-pagination",
           bulletClass: "slider__paginationBullet",
           bulletActiveClass: "slider__paginationBullet--active",
           clickable: true,
-          type: "bullets"
-        }
-      }
+          type: "bullets",
+        },
+      },
     };
-  }
+  },
 };
 </script>
 <style lang="scss">
@@ -125,6 +124,17 @@ export default {
     position: relative;
     background-size: cover;
     background-position: center;
+
+    &::after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      background-color: rgba($cBlack, 0.5);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 
   &__slideInner {
@@ -132,6 +142,15 @@ export default {
     top: 50%;
     left: 0;
     transform: translate(0%, -50%);
+    z-index: 10;
+
+    @include rwd("large-laptop") {
+      left: 12vw;
+    }
+
+    @include rwd("tablet") {
+      left: 0;
+    }
   }
 
   &__slideHeading {
@@ -142,8 +161,24 @@ export default {
   &__slideTitle {
     color: $cOrange;
     font-size: 10rem;
-    font-weight: 700;
     line-height: 13.3rem;
+    font-weight: 700;
+
+    @include rwd("large-laptop") {
+      font-size: 8rem;
+      line-height: 11.3rem;
+    }
+
+    @include rwd("small-tablet") {
+      font-size: 6rem;
+      line-height: 9.3rem;
+    }
+
+    @include rwd("phone") {
+      font-size: 5rem;
+      line-height: 6.3rem;
+    }
+
   }
 
   &__slideSubtitle {
@@ -151,6 +186,21 @@ export default {
     font-size: 5rem;
     font-weight: 400;
     line-height: 6.7rem;
+
+    @include rwd("large-laptop") {
+      font-size: 4rem;
+      line-height: 5.7rem;
+    }
+
+    @include rwd("small-tablet") {
+      font-size: 3.5rem;
+      line-height: 5rem;
+    }
+
+    @include rwd("phone") {
+      font-size: 3rem;
+      line-height: 4.5rem;
+    }
   }
 
   &__slideDesc {
@@ -164,18 +214,47 @@ export default {
   &__slideButtons {
     display: flex;
     margin-top: 8.4rem;
+
+    @include rwd("large-phone") {
+      flex-direction: column;
+    }
+
+    @include rwd("small-tablet") {
+      margin-top: 5rem;
+    }
   }
 
   &__slideButton {
     margin-right: 3.2rem;
+
+    @include rwd("small-tablet") {
+      margin-right: 2rem;
+    }
+
+    @include rwd("large-phone") {
+      margin-right: 0;
+      margin-top: 2rem;
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+    }
   }
 
   &__nav {
     color: $cWhite;
 
+    @include rwd("tablet") {
+      display: none;
+    }
+
     &::after {
       font-weight: 700;
       z-index: 10;
+
+      @include rwd("large-laptop") {
+        font-size: 4rem;
+      }
     }
 
     &::before {
@@ -186,6 +265,16 @@ export default {
       background-color: $cOrange;
       transform: rotate(45deg);
       position: absolute;
+
+      @include rwd("large-laptop") {
+        width: 18rem;
+        height: 18rem;
+      }
+
+      @include rwd("laptop") {
+        width: 16rem;
+        height: 16rem;
+      }
     }
 
     &--next {
@@ -235,7 +324,7 @@ export default {
     height: 2.3rem;
     background-color: $cWhite;
     transform: rotate(45deg);
-    margin: 0 1rem;
+    margin: 0 1.5rem;
     cursor: pointer;
 
     &--active {

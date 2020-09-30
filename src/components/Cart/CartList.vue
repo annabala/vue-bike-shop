@@ -46,12 +46,12 @@ import "vue-select/dist/vue-select.css";
 export default {
   name: "CartList",
   components: {
-    vSelect
+    vSelect,
   },
   mixins: [imagePath],
   data() {
     return {
-      quantity: "1"
+      quantity: "1",
     };
   },
   computed: {
@@ -63,7 +63,7 @@ export default {
         (quantity, item) => this.quantity * item.price,
         0
       );
-    }
+    },
   },
   methods: {
     removeFromCart(itemId) {
@@ -71,8 +71,8 @@ export default {
     },
     itemQuantity(item) {
       return Array.from(Array(item).keys(), (_, i) => i + 1);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">
@@ -91,11 +91,22 @@ export default {
     border: 2px solid rgba($cGrey03, 0.26);
     width: calc(100% - 1.6rem);
     margin-bottom: 1.6rem;
+
+    @include rwd("large-tablet") {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
   }
 
   &__itemImage {
     width: 30%;
     object-fit: contain;
+
+    @include rwd("large-tablet") {
+      max-width: 100%;
+    }
   }
 
   &__itemContent {
@@ -104,6 +115,11 @@ export default {
     justify-content: space-between;
     width: 70%;
     padding: 2.2rem 5rem 2.2rem 7rem;
+
+    @include rwd("large-tablet") {
+      width: 100%;
+      padding: 2rem;
+    }
   }
 
   &__itemContentTop,
@@ -113,14 +129,28 @@ export default {
     align-items: center;
   }
 
+  &__itemContentBottom {
+    @include rwd("large-tablet") {
+      margin-top: 2rem;
+    }
+  }
+
   &__itemName {
     font-size: 3.5rem;
     font-weight: 700;
+
+    @include rwd("large-phone") {
+      font-size: 2.5rem;
+    }
   }
 
   &__itemCompany {
     font-size: 3rem;
     font-weight: 700;
+
+    @include rwd("large-phone") {
+      font-size: 2rem;
+    }
   }
 
   &__itemIcon {
@@ -133,6 +163,11 @@ export default {
     font-size: 4.5rem;
     line-height: 6rem;
     font-weight: 700;
+
+    @include rwd("large-phone") {
+      font-size: 3.5rem;
+      line-height: 5rem;
+    }
   }
 
   &__itemSelect {

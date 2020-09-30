@@ -115,6 +115,10 @@ export default {
     display: flex;
     justify-content: space-between;
     padding: 1.2rem;
+
+    @include rwd("large-tablet") {
+      flex-direction: column;
+    }
   }
 
   &__totalButton {

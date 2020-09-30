@@ -47,6 +47,10 @@ export default {
 
   &__logo {
     max-width: 80%;
+
+    @include rwd("large-phone") {
+      max-width: 12rem;
+    }
   }
 
   &__items {

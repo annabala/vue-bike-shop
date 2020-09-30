@@ -46,16 +46,28 @@ export default {
   padding-top: 16rem;
   padding-bottom: 6rem;
 
+  @include rwd("large-tablet") {
+    flex-direction: column;
+  }
+
   &__items {
     display: flex;
     align-items: flex-start;
     flex-direction: column;
     flex: 70%;
+
+    @include rwd("large-tablet") {
+      flex: 100%;
+    }
   }
 
   &__total {
     border: 2px solid rgba($cGrey03, 0.26);
     flex: 53.6rem;
+
+    @include rwd("large-tablet") {
+      flex: 100%;
+    }
   }
 
   &__item {
@@ -122,66 +134,6 @@ export default {
 
   &__infoLink {
     color: $cOrange;
-  }
-
-  &__totalTitle {
-    background-color: $cOrange;
-    padding: 2rem 4rem;
-    color: $cWhite;
-    font-size: 3.5rem;
-    line-height: 4.7rem;
-    font-weight: 700;
-  }
-
-  &__totalContent {
-    padding: 1.2rem 4rem;
-  }
-
-  &__totalContentItem {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
-
-  &__totalLabel {
-    display: inline-block;
-    font-size: 2.5rem;
-    line-height: 3.3rem;
-    font-weight: 500;
-    margin: 1.5rem 0 0 0;
-
-    &--big {
-      font-size: 3.5rem;
-      line-height: 4.7rem;
-      font-weight: 700;
-    }
-  }
-
-  &__totalValue {
-    font-size: 2.5rem;
-    line-height: 3.3rem;
-    font-weight: 500;
-  }
-
-  &__totalGrandTotal {
-    font-size: 3.5rem;
-    line-height: 4.7rem;
-    font-weight: 700;
-    margin-top: 10rem;
-    margin-bottom: 4rem;
-  }
-
-  &__totalButtons {
-    display: flex;
-    justify-content: space-between;
-    padding: 1.2rem;
-  }
-
-  &__totalButton {
-    & button,
-    & a {
-      width: 22rem;
-    }
   }
 }
 </style>

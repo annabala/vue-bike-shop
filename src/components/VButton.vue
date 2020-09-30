@@ -6,7 +6,7 @@
       :class="[
         'vButton__button vButton__button--link',
         `vButton__button--${theme}`,
-        `vButton__button--${size}`
+        `vButton__button--${size}`,
       ]"
     >
       <span>{{ text }}</span>
@@ -18,7 +18,7 @@
         'vButton__button',
         `vButton__button--${theme}`,
         `vButton__button--${size}`,
-        { 'vButton__button--disabled': disabled }
+        { 'vButton__button--disabled': disabled },
       ]"
       :disabled="disabled"
       @click="onClick"
@@ -33,34 +33,34 @@ export default {
   props: {
     text: {
       type: String,
-      default: ""
+      default: "",
     },
     type: {
       type: String,
-      default: "button"
+      default: "button",
     },
     href: {
       type: String,
-      default: ""
+      default: "",
     },
     theme: {
       type: String,
-      default: ""
+      default: "",
     },
     size: {
       type: String,
-      default: "medium"
+      default: "medium",
     },
     disabled: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   methods: {
     onClick(e) {
       this.$emit("click", e);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">
@@ -164,6 +164,10 @@ export default {
       height: 8rem;
       font-size: 2.5rem;
       line-height: 3.3rem;
+
+      @include rwd("large-laptop") {
+        width: 26rem;
+      }
     }
 
     &--medium {
@@ -171,6 +175,25 @@ export default {
       height: 7.5rem;
       font-size: 3rem;
       line-height: 4rem;
+
+      @include rwd("large-laptop") {
+        width: 24rem;
+      }
+
+      @include rwd("tablet") {
+        width: 22rem;
+        font-size: 2.5rem;
+        line-height: 3.5rem;
+      }
+
+      @include rwd("small-tablet") {
+        width: 18rem;
+        height: 6.5rem;
+      }
+
+      @include rwd("large-phone") {
+        width: 100%;
+      }
     }
 
     &--small {

@@ -1,7 +1,7 @@
 <template>
   <div :class="['navbar', { 'is-active': isMobile }]">
     <router-link to="/"
-      ><img src="./../assets/images/OldGold.png" alt="oldgold"
+      ><img src="./../assets/images/OldGold.png" alt="oldgold" class="navbar__logo"
     /></router-link>
     <div class="navbar__mobileBox">
       <router-link
@@ -95,6 +95,12 @@ export default {
 
     &.is-active {
       border-bottom: 2px solid $cGrey04;
+    }
+  }
+
+  &__logo {
+    @include rwd("large-phone") {
+      max-width: 12rem;
     }
   }
 
