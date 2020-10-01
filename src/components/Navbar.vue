@@ -1,7 +1,10 @@
 <template>
   <div :class="['navbar', { 'is-active': isMobile }]">
     <router-link to="/"
-      ><img src="./../assets/images/OldGold.png" alt="oldgold" class="navbar__logo"
+      ><img
+        src="./../assets/images/OldGold.png"
+        alt="oldgold"
+        class="navbar__logo"
     /></router-link>
     <div class="navbar__mobileBox">
       <router-link
@@ -122,6 +125,10 @@ export default {
       padding: 5rem 10rem;
       transform: translateX(100%);
       transition: transform $tr;
+    }
+
+    @include rwd("large-phone") {
+      top: 8.7rem;
     }
   }
 

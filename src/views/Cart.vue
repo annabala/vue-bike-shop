@@ -6,6 +6,12 @@
         >go back shopping</router-link
       >
     </p>
+    <!-- <VHeading
+      v-if="cartItems.length > 0"
+      :level="'2'"
+      :text="'Cart items:'"
+      class="cart__heading cart__heading--h2"
+    /> -->
     <cartList v-if="cartItems.length > 0" class="cart__items" />
     <cartTotal v-if="cartItems.length > 0" class="cart__total" />
   </div>
@@ -13,12 +19,14 @@
 <script>
 import CartList from "@/components/Cart/CartList";
 import CartTotal from "@/components/Cart/CartTotal";
+// import VHeading from "@/components/VHeading";
 
 export default {
   name: "Cart",
   components: {
     CartList,
     CartTotal,
+    // VHeading,
   },
   computed: {
     cartItems() {
@@ -50,20 +58,31 @@ export default {
     flex-direction: column;
   }
 
+  @include rwd("tablet") {
+    padding-top: 12rem;
+  }
+
+  &__heading {
+    margin-bottom: 2rem;
+  }
+
   &__items {
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    flex: 70%;
+    flex: 0 0 70%;
+    max-width: 70%;
 
     @include rwd("large-tablet") {
-      flex: 100%;
+      flex: 0 0 100%;
+      width: 100%;
     }
   }
 
   &__total {
     border: 2px solid rgba($cGrey03, 0.26);
-    flex: 53.6rem;
+    flex: 0 0 53.6rem;
+    max-width: 53.6rem;
 
     @include rwd("large-tablet") {
       flex: 100%;
