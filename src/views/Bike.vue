@@ -95,16 +95,32 @@ export default {
   padding-top: 16rem;
   padding-bottom: 6rem;
 
+  @include rwd("tablet") {
+    padding-top: 14rem;
+  }
+
   &__top {
     display: flex;
+
+    @include rwd("tablet") {
+      flex-direction: column;
+    }
   }
 
   &__info {
     flex: 0 0 60%;
+
+    @include rwd("tablet") {
+      flex: 0 0 100%;
+    }
   }
 
   &__actions {
     padding-left: 8rem;
+
+    @include rwd("tablet") {
+      padding-left: 0;
+    }
   }
 
   &__name {
@@ -119,12 +135,34 @@ export default {
     margin-top: 1rem;
   }
 
+  &__buttons {
+    @include rwd("tablet") {
+      display: flex;
+    }
+
+    @include rwd("large-phone") {
+      flex-direction: column;
+    }
+  }
+
   &__button {
     margin-bottom: 2rem;
+
+    @include rwd("tablet") {
+      margin-right: 2rem;
+    }
+
+     @include rwd("large-phone") {
+      margin-right: 0;
+    }
 
     & button {
       width: 100%;
       padding: 0 1rem;
+
+      @include rwd("tablet") {
+        min-width: 120px;
+      }
     }
 
     &--noPadding {
@@ -163,6 +201,10 @@ export default {
     font-size: 1.5rem;
     line-height: 2rem;
     margin-bottom: 4rem;
+
+    @include rwd("tablet") {
+      margin-bottom: 2rem;
+    }
   }
 
   &__description {
